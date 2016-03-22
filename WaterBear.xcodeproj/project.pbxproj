@@ -10,6 +10,7 @@
 		C16B2F671C9F958600333F3B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C16B2F661C9F958600333F3B /* main.cpp */; };
 		C16B2F781C9F9A1800333F3B /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C16B2F771C9F9A1800333F3B /* libglfw.3.2.dylib */; };
 		C16B2F921C9FAB0C00333F3B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C16B2F911C9FAB0C00333F3B /* OpenGL.framework */; };
+		C69595E81CA11E1E006CA238 /* WaterBearApplication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C69595E71CA11E1E006CA238 /* WaterBearApplication.cpp */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +30,9 @@
 		C16B2F661C9F958600333F3B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		C16B2F771C9F9A1800333F3B /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = ../lib/glfw/src/libglfw.3.2.dylib; sourceTree = "<group>"; };
 		C16B2F911C9FAB0C00333F3B /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		C69595E61CA11DEF006CA238 /* WaterBearApplication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaterBearApplication.h; sourceTree = "<group>"; };
+		C69595E71CA11E1E006CA238 /* WaterBearApplication.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WaterBearApplication.cpp; sourceTree = "<group>"; };
+		C69595E91CA1201F006CA238 /* WaterBearGeometry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaterBearGeometry.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,9 @@
 			isa = PBXGroup;
 			children = (
 				C16B2F661C9F958600333F3B /* main.cpp */,
+				C69595E61CA11DEF006CA238 /* WaterBearApplication.h */,
+				C69595E71CA11E1E006CA238 /* WaterBearApplication.cpp */,
+				C69595E91CA1201F006CA238 /* WaterBearGeometry.h */,
 			);
 			path = WaterBear;
 			sourceTree = "<group>";
@@ -126,6 +133,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C69595E81CA11E1E006CA238 /* WaterBearApplication.cpp in Sources */,
 				C16B2F671C9F958600333F3B /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,8 +223,8 @@
 		C16B2F6B1C9F958600333F3B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				HEADER_SEARCH_PATHS = /Users/mbradberry/dev/lib/glfw/include/;
-				LIBRARY_SEARCH_PATHS = /Users/mbradberry/dev/lib/glfw/src/;
+				HEADER_SEARCH_PATHS = /Users/carmack/dev/lib/glfw/include/;
+				LIBRARY_SEARCH_PATHS = /Users/carmack/dev/lib/glfw/src/;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -224,8 +232,8 @@
 		C16B2F6C1C9F958600333F3B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				HEADER_SEARCH_PATHS = /Users/mbradberry/dev/lib/glfw/include/;
-				LIBRARY_SEARCH_PATHS = /Users/mbradberry/dev/lib/glfw/src/;
+				HEADER_SEARCH_PATHS = /Users/carmack/dev/lib/glfw/include/;
+				LIBRARY_SEARCH_PATHS = /Users/carmack/dev/lib/glfw/src/;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -249,6 +257,7 @@
 				C16B2F6C1C9F958600333F3B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

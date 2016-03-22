@@ -1,36 +1,19 @@
-#include <GLFW/glfw3.h>
-#include <stdlib.h>
-#include <stdio.h>
+#include "WaterBearApplication.h"
+
+class RenderingApp : public WaterBear::Core::Application {
+public:
+    RenderingApp() {}
+    
+    void OnRun() {
+        glClearColor(0.f, 0.3f, 0.5f, 1.0f);
+    }
+};
 
 int main(void) {
-    GLFWwindow* window;
+    RenderingApp *app = new RenderingApp();
+    app->Initialize(640, 480, "WaterBear");
+    app->Run();
+    app->Shutdown();
     
-    if (!glfwInit())
-        exit(EXIT_FAILURE);
-    
-    window = glfwCreateWindow(640, 480, "WaterBear", NULL, NULL);
-    
-    if (!window) {
-        glfwTerminate();
-        exit(EXIT_FAILURE);
-    }
-    
-    glfwMakeContextCurrent(window);
-    // vsync
-    glfwSwapInterval(1);
-    
-    while (!glfwWindowShouldClose(window)) {
-        int width, height;
-        glfwGetFramebufferSize(window, &width, &height);
-        glViewport(0, 0, width, height);
-        
-        glClear(GL_COLOR_BUFFER_BIT);
-
-        glfwSwapBuffers(window);
-        glfwPollEvents();
-    }
-    
-    glfwDestroyWindow(window);
-    glfwTerminate();
-    exit(EXIT_SUCCESS);
+    return 0;
 }
