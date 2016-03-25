@@ -14,7 +14,9 @@ namespace Core{
         virtual void Shutdown();
         virtual void Run();
         
+        virtual void OnStart() = 0;
         virtual void OnRun() = 0;
+        virtual void OnShutdown() = 0;
         
         virtual ~Application() {};
         
