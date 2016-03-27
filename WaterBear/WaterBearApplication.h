@@ -10,21 +10,47 @@ namespace Core{
     public:
         Application() {}
         
-        virtual void Initialize(int windowWidth, int windowHeight, const std::string& windowTitle, bool vSync = true);
-        virtual void Shutdown();
-        virtual void Run();
+        virtual void Run(Application *);
         
-        virtual void OnStart() = 0;
-        virtual void OnRun() = 0;
-        virtual void OnShutdown() = 0;
         
         virtual ~Application() {};
         
+    protected:
+        static Application *sApp;
+        
+        virtual void OnInit();
+        virtual void OnStart();
+        virtual void OnShutDown();
+        virtual void OnRender(double currentTime) = 0;
+        virtual void OnWindowResize(int w, int h);
+        
+        struct AppConfig {
+            std::string windowTitle;
+            int windowWidth;
+            int windowHeight;
+            int samples;
+            bool vsync;
+            
+            AppConfig():vsync(false) {}
+        };
+        
+        AppConfig config;
+        
     private:
         GLFWwindow *mWindow;
-        SizeI mWindowSize;
+        
+        static void glfw_onResize(GLFWwindow *window, int w, int h);
     };
     
     
 }
+}
+
+#define DECLARE_MAIN(a)                             \
+int main(int argc, const char ** argv)              \
+{                                                   \
+    a *app = new a;                                 \
+    app->Run(app);                                  \
+    delete app;                                     \
+    return 0;                                       \
 }

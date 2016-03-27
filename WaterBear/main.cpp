@@ -7,7 +7,6 @@
 
 class RenderingApp : public WaterBear::Core::Application {
 public:
-    RenderingApp() {}
     
     void CompileShader(GLuint shader, std::string shaderName) {
         // load shader text from file
@@ -67,14 +66,14 @@ public:
         glAttachShader(mProgram, vs);
         
         glLinkProgram(mProgram);
-//        glDeleteShader(fs);
-//        glDeleteShader(vs);
+        glDeleteShader(fs);
+        glDeleteShader(vs);
         
         glGenVertexArrays(1, &mVao);
         glBindVertexArray(mVao);
     }
     
-    void OnRun() {
+    void OnRender(double currentTime) {
         static const GLfloat green[] = { 0.0f, 0.25f, 0.0f, 1.0f };
         glClearBufferfv(GL_COLOR, 0, green);
         
@@ -83,8 +82,14 @@ public:
     }
     
     void OnShutdown() {
+        Application::OnShutDown();
+        
         glDeleteVertexArrays(1, &mVao);
         glDeleteProgram(mProgram);
+    }
+    
+    void OnWindowResize(int w, int h) {
+        Application::OnWindowResize(w, h);
     }
     
 private:
@@ -92,11 +97,11 @@ private:
     GLuint mVao;
 };
 
-int main(void) {
+//DECLARE_MAIN(RenderingApp)
+int main(int argc, const char** argv) {
     RenderingApp *app = new RenderingApp();
-    app->Initialize(640, 480, "WaterBear");
-    app->Run();
-    app->Shutdown();
-    
+    app->Run(app);
+    delete app;
     return 0;
 }
+
