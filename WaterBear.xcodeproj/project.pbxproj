@@ -31,6 +31,11 @@
 		C16B2F661C9F958600333F3B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		C16B2F771C9F9A1800333F3B /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = ../lib/glfw/src/libglfw.3.2.dylib; sourceTree = "<group>"; };
 		C16B2F911C9FAB0C00333F3B /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		C67626121CA8895B0087CEB3 /* single_tri_fs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = single_tri_fs.glsl; sourceTree = "<group>"; };
+		C67626131CA8895B0087CEB3 /* single_tri_vs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = single_tri_vs.glsl; sourceTree = "<group>"; };
+		C67626141CA889810087CEB3 /* spinny_cube_vs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spinny_cube_vs.glsl; sourceTree = "<group>"; };
+		C67626151CA889910087CEB3 /* spinny_cube_fs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spinny_cube_fs.glsl; sourceTree = "<group>"; };
+		C67626171CA88EE70087CEB3 /* vmath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vmath.h; sourceTree = "<group>"; };
 		C69595E61CA11DEF006CA238 /* WaterBearApplication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaterBearApplication.h; sourceTree = "<group>"; };
 		C69595E71CA11E1E006CA238 /* WaterBearApplication.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WaterBearApplication.cpp; sourceTree = "<group>"; };
 		C69595E91CA1201F006CA238 /* WaterBearGeometry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaterBearGeometry.h; sourceTree = "<group>"; };
@@ -76,6 +81,7 @@
 		C16B2F651C9F958600333F3B /* WaterBear */ = {
 			isa = PBXGroup;
 			children = (
+				C67626111CA8895B0087CEB3 /* shaders */,
 				C69595EA1CA3CBAE006CA238 /* ext */,
 				C16B2F661C9F958600333F3B /* main.cpp */,
 				C69595E61CA11DEF006CA238 /* WaterBearApplication.h */,
@@ -85,9 +91,29 @@
 			path = WaterBear;
 			sourceTree = "<group>";
 		};
+		C67626111CA8895B0087CEB3 /* shaders */ = {
+			isa = PBXGroup;
+			children = (
+				C67626121CA8895B0087CEB3 /* single_tri_fs.glsl */,
+				C67626131CA8895B0087CEB3 /* single_tri_vs.glsl */,
+				C67626141CA889810087CEB3 /* spinny_cube_vs.glsl */,
+				C67626151CA889910087CEB3 /* spinny_cube_fs.glsl */,
+			);
+			path = shaders;
+			sourceTree = "<group>";
+		};
+		C67626161CA88EE70087CEB3 /* math */ = {
+			isa = PBXGroup;
+			children = (
+				C67626171CA88EE70087CEB3 /* vmath.h */,
+			);
+			path = math;
+			sourceTree = "<group>";
+		};
 		C69595EA1CA3CBAE006CA238 /* ext */ = {
 			isa = PBXGroup;
 			children = (
+				C67626161CA88EE70087CEB3 /* math */,
 				C69595EB1CA3CBAE006CA238 /* gl */,
 			);
 			path = ext;
