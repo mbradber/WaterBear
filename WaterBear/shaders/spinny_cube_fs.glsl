@@ -1,11 +1,13 @@
 #version 410 core
 
-out vec4 color;
+uniform sampler2D tex_object;
 
 in VS_OUT {
-    vec4 color;
+    vec2 tc;
 } fs_in;
 
-void main(void) {
-    color = fs_in.color;
+out vec3 color;
+
+void main() {
+    color = texture(tex_object, fs_in.tc).rgb;
 }

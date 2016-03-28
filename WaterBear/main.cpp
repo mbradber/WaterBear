@@ -6,6 +6,13 @@
 #include <cstdlib>
 #include "ext/math/vmath.h"
 
+typedef struct WBVert_Pos_Tex {
+    vmath::vec3 pos;
+    vmath::vec2 tc;
+} WBVert_Pos_Tex;
+
+#define BUFFER_OFFSET(i) ((char *)NULL + (i))
+
 class RenderingApp : public WaterBear::Core::Application {
 public:
     
@@ -55,6 +62,31 @@ public:
     }
     
     void OnStart() {
+        
+#define B 0x00, 0x00, 0x00, 0x00
+#define W 0xFF, 0xFF, 0xFF, 0xFF
+        static const GLubyte tex_data[] =
+        {
+            B, W, B, W, B, W, B, W, B, W, B, W, B, W, B, W,
+            W, B, W, B, W, B, W, B, W, B, W, B, W, B, W, B,
+            B, W, B, W, B, W, B, W, B, W, B, W, B, W, B, W,
+            W, B, W, B, W, B, W, B, W, B, W, B, W, B, W, B,
+            B, W, B, W, B, W, B, W, B, W, B, W, B, W, B, W,
+            W, B, W, B, W, B, W, B, W, B, W, B, W, B, W, B,
+            B, W, B, W, B, W, B, W, B, W, B, W, B, W, B, W,
+            W, B, W, B, W, B, W, B, W, B, W, B, W, B, W, B,
+            B, W, B, W, B, W, B, W, B, W, B, W, B, W, B, W,
+            W, B, W, B, W, B, W, B, W, B, W, B, W, B, W, B,
+            B, W, B, W, B, W, B, W, B, W, B, W, B, W, B, W,
+            W, B, W, B, W, B, W, B, W, B, W, B, W, B, W, B,
+            B, W, B, W, B, W, B, W, B, W, B, W, B, W, B, W,
+            W, B, W, B, W, B, W, B, W, B, W, B, W, B, W, B,
+            B, W, B, W, B, W, B, W, B, W, B, W, B, W, B, W,
+            W, B, W, B, W, B, W, B, W, B, W, B, W, B, W, B,
+        };
+#undef B
+#undef W
+        
         mProgram = glCreateProgram();
         
         GLuint fs = glCreateShader(GL_FRAGMENT_SHADER);
@@ -76,43 +108,80 @@ public:
         glGenVertexArrays(1, &mVao);
         glBindVertexArray(mVao);
         
-        static const GLushort vertIndices[] =
-        {
-            0, 1, 2,
-            2, 1, 3,
-            2, 3, 4,
-            4, 3, 5,
-            4, 5, 6,
-            6, 5, 7,
-            6, 7, 0,
-            0, 7, 1,
-            6, 0, 2,
-            2, 4, 6,
-            7, 5, 3,
-            7, 3, 1
+        WBVert_Pos_Tex cube_verts[] = {
+            {{-1, -1, 1}, {0, 0}},
+            {{1, -1, 1}, {1, 0}},
+            {{1, 1, 1}, {1, 1}},
+            {{-1, 1, 1}, {0, 1}},
+            
+            {{1, -1, 1}, {0, 0}},
+            {{1, -1, -1}, {1, 0}},
+            {{1, 1, -1}, {1, 1}},
+            {{1, 1, 1}, {0, 1}},
+            
+            {{1, -1, -1}, {0, 0}},
+            {{-1, -1, -1}, {1, 0}},
+            {{-1, 1, -1}, {1, 1}},
+            {{1, 1, -1}, {0, 1}},
+            
+            {{-1, -1, -1}, {0, 0}},
+            {{-1, -1, 1}, {1, 0}},
+            {{-1, 1, 1}, {1, 1}},
+            {{-1, 1, -1}, {0, 1}},
+            
+            {{-1, 1, 1}, {0, 0}},
+            {{1, 1, 1}, {1, 0}},
+            {{1, 1, -1}, {1, 1}},
+            {{-1, 1, -1}, {0, 1}},
+            
+            {{1, -1, -1}, {0, 0}},
+            {{1, -1, 1}, {1, 0}},
+            {{-1, -1, 1}, {1, 1}},
+            {{-1, -1, -1}, {0, 1}}
         };
-        
-        static const GLfloat vertPositions[] =
-        {
-            -0.25f, -0.25f, -0.25f,
-            -0.25f,  0.25f, -0.25f,
-            0.25f, -0.25f, -0.25f,
-            0.25f,  0.25f, -0.25f,
-            0.25f, -0.25f,  0.25f,
-            0.25f,  0.25f,  0.25f,
-            -0.25f, -0.25f,  0.25f,
-            -0.25f,  0.25f,  0.25f,
+    
+        GLushort cube_indices[] = {
+            0, 1, 2,
+            2, 3, 0,
+            
+            4, 5, 6,
+            6, 7, 4,
+            
+            8, 9, 10,
+            10, 11, 8,
+            
+            12, 13, 14,
+            14, 15, 12,
+            
+            16, 17, 18,
+            18, 19, 16,
+            
+            20, 21, 22,
+            22, 23, 20,
         };
         
         glGenBuffers (1, &mPositionBuffer);
         glBindBuffer(GL_ARRAY_BUFFER, mPositionBuffer);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(vertPositions), vertPositions, GL_STATIC_DRAW);
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(cube_verts), cube_verts, GL_STATIC_DRAW);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(WBVert_Pos_Tex), NULL);
         glEnableVertexAttribArray(0);
         
         glGenBuffers(1, &mIndexBuffer);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mIndexBuffer);
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(vertIndices), vertIndices, GL_STATIC_DRAW);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(cube_indices), cube_indices, GL_STATIC_DRAW);
+        
+        // texture
+        glGenTextures(1, &mTexObject);
+        glBindTexture(GL_TEXTURE_2D, mTexObject);
+        glTexStorage2D(GL_TEXTURE_2D, 1, GL_RGB8, 16, 16);
+        glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, 16, 16, GL_RGBA, GL_UNSIGNED_BYTE, tex_data);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        
+        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(WBVert_Pos_Tex), BUFFER_OFFSET(12));
+        glEnableVertexAttribArray(1);
+        
+        mTexLoc = glGetUniformLocation(mProgram, "tex_object");
         
         glEnable(GL_CULL_FACE);
         glEnable(GL_DEPTH_TEST);
@@ -123,7 +192,6 @@ public:
         static const GLfloat green[] = { 0.0f, 0.25f, 0.0f, 1.0f };
         static const float one = 1.0f;
         
-        glViewport(0, 0, config.windowWidth, config.windowHeight);
         glClearBufferfv(GL_COLOR, 0, green);
         glClearBufferfv(GL_DEPTH, 0, &one);
         
@@ -135,7 +203,7 @@ public:
         
         // model-view matrix
         float f = (float)currentTime * 0.3f;
-        vmath::mat4 mvMatrix = vmath::translate(0.0f, 0.0f, -4.0f) *
+        vmath::mat4 mvMatrix = vmath::translate(0.0f, 0.0f, -7.0f) *
         vmath::translate(sinf(2.1f * f) * 0.5f,
                          cosf(1.7f * f) * 0.5f,
                          sinf(1.3f * f) * cosf(1.5f * f) * 2.0f) *
@@ -143,6 +211,9 @@ public:
         vmath::rotate((float)currentTime * 81.0f, 1.0f, 0.0f, 0.0f);
         
         glUniformMatrix4fv(mModelViewLoc, 1, GL_FALSE, mvMatrix);
+        
+        // textures
+        glUniform1i(mTexLoc, 0);
         
         // draw
         glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_SHORT, 0);
@@ -160,6 +231,7 @@ public:
     
     void OnWindowResize(int w, int h) {
         Application::OnWindowResize(w, h);
+        glViewport(0, 0, config.windowWidth, config.windowHeight);
     }
     
 private:
@@ -169,6 +241,8 @@ private:
     GLuint mProjLoc;
     GLuint mPositionBuffer;
     GLuint mIndexBuffer;
+    GLuint mTexObject;
+    GLuint mTexLoc;
 };
 
 DECLARE_MAIN(RenderingApp)
