@@ -100,10 +100,10 @@ public:
         mProgram = glCreateProgram();
         
         GLuint fs = glCreateShader(GL_FRAGMENT_SHADER);
-        CompileShader(fs, "spinny_cube_fs.glsl");
+        CompileShader(fs, "texture_map_basic_fs.glsl");
         
         GLuint vs = glCreateShader(GL_VERTEX_SHADER);
-        CompileShader(vs, "spinny_cube_vs.glsl");
+        CompileShader(vs, "texture_map_basic_vs.glsl");
         
         glAttachShader(mProgram, fs);
         glAttachShader(mProgram, vs);
@@ -217,13 +217,9 @@ public:
         glUniformMatrix4fv(mProjLoc, 1, GL_FALSE, projMatrix);
         
         // model-view matrix
-        float f = (float)currentTime * 0.3f;
         vmath::mat4 mvMatrix = vmath::translate(0.0f, 0.0f, -7.0f) *
-        vmath::translate(sinf(2.1f * f) * 0.5f,
-                         cosf(1.7f * f) * 0.5f,
-                         sinf(1.3f * f) * cosf(1.5f * f) * 2.0f) *
-        vmath::rotate((float)currentTime * 45.0f, 0.0f, 1.0f, 0.0f) *
-        vmath::rotate((float)currentTime * 81.0f, 1.0f, 0.0f, 0.0f);
+            vmath::rotate((float)currentTime * 45.0f, 0.0f, 1.0f, 0.0f) *
+            vmath::rotate((float)currentTime * 81.0f, 1.0f, 0.0f, 0.0f);
         
         glUniformMatrix4fv(mModelViewLoc, 1, GL_FALSE, mvMatrix);
         

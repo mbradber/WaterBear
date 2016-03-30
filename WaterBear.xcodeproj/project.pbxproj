@@ -38,10 +38,10 @@
 		C193A83D1CAB6F2100A0E0B2 /* brick.ktx */ = {isa = PBXFileReference; lastKnownFileType = file; path = brick.ktx; sourceTree = "<group>"; };
 		C193A83E1CAB6F2100A0E0B2 /* floor.ktx */ = {isa = PBXFileReference; lastKnownFileType = file; path = floor.ktx; sourceTree = "<group>"; };
 		C193A83F1CAB6F2100A0E0B2 /* pattern1.ktx */ = {isa = PBXFileReference; lastKnownFileType = file; path = pattern1.ktx; sourceTree = "<group>"; };
+		C193A8401CAC582A00A0E0B2 /* texture_map_basic_fs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = texture_map_basic_fs.glsl; sourceTree = "<group>"; };
+		C193A8411CAC582A00A0E0B2 /* texture_map_basic_vs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = texture_map_basic_vs.glsl; sourceTree = "<group>"; };
 		C67626121CA8895B0087CEB3 /* single_tri_fs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = single_tri_fs.glsl; sourceTree = "<group>"; };
 		C67626131CA8895B0087CEB3 /* single_tri_vs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = single_tri_vs.glsl; sourceTree = "<group>"; };
-		C67626141CA889810087CEB3 /* spinny_cube_vs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spinny_cube_vs.glsl; sourceTree = "<group>"; };
-		C67626151CA889910087CEB3 /* spinny_cube_fs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spinny_cube_fs.glsl; sourceTree = "<group>"; };
 		C67626171CA88EE70087CEB3 /* vmath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vmath.h; sourceTree = "<group>"; };
 		C69595E61CA11DEF006CA238 /* WaterBearApplication.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaterBearApplication.h; sourceTree = "<group>"; };
 		C69595E71CA11E1E006CA238 /* WaterBearApplication.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WaterBearApplication.cpp; sourceTree = "<group>"; };
@@ -130,10 +130,10 @@
 		C67626111CA8895B0087CEB3 /* shaders */ = {
 			isa = PBXGroup;
 			children = (
+				C193A8401CAC582A00A0E0B2 /* texture_map_basic_fs.glsl */,
+				C193A8411CAC582A00A0E0B2 /* texture_map_basic_vs.glsl */,
 				C67626121CA8895B0087CEB3 /* single_tri_fs.glsl */,
 				C67626131CA8895B0087CEB3 /* single_tri_vs.glsl */,
-				C67626141CA889810087CEB3 /* spinny_cube_vs.glsl */,
-				C67626151CA889910087CEB3 /* spinny_cube_fs.glsl */,
 			);
 			path = shaders;
 			sourceTree = "<group>";
