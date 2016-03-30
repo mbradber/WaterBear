@@ -5,6 +5,7 @@
 #include <fstream>
 #include <cstdlib>
 #include "ext/math/vmath.h"
+#include "ext/sb/sb7ktx.h"
 
 typedef struct WBVert_Pos_Tex {
     vmath::vec3 pos;
@@ -16,11 +17,20 @@ typedef struct WBVert_Pos_Tex {
 class RenderingApp : public WaterBear::Core::Application {
 public:
     
-    void CompileShader(GLuint shader, std::string shaderName) {
-        // load shader text from file
+    char* getRootdir() {
         char *rootDir = getenv("WATERBEAR_DIR");
         if(!rootDir) {
             std::cout << "Please define WATERBEAR_DIR" << std::endl;
+            return NULL;
+        }
+        
+        return rootDir;
+    }
+    
+    void CompileShader(GLuint shader, std::string shaderName) {
+        // load shader text from file
+        char *rootDir = getRootdir();
+        if(!rootDir) {
             return;
         }
         
@@ -172,9 +182,14 @@ public:
         
         // texture
         glGenTextures(1, &mTexObject);
-        glBindTexture(GL_TEXTURE_2D, mTexObject);
-        glTexStorage2D(GL_TEXTURE_2D, 1, GL_RGB8, 16, 16);
-        glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, 16, 16, GL_RGBA, GL_UNSIGNED_BYTE, tex_data);
+        
+        char* rootDir = getRootdir();
+        std::string brickTexturePath = std::string(rootDir) + "../assets/ktx/baboon.ktx";
+        sb7::ktx::file::load(brickTexturePath.c_str(), mTexObject);
+        
+//        glBindTexture(GL_TEXTURE_2D, mTexObject);
+//        glTexStorage2D(GL_TEXTURE_2D, 1, GL_RGB8, 16, 16);
+//        glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, 16, 16, GL_RGBA, GL_UNSIGNED_BYTE, tex_data);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
         

@@ -10,8 +10,9 @@
 		C16B2F671C9F958600333F3B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C16B2F661C9F958600333F3B /* main.cpp */; };
 		C16B2F781C9F9A1800333F3B /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C16B2F771C9F9A1800333F3B /* libglfw.3.2.dylib */; };
 		C16B2F921C9FAB0C00333F3B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C16B2F911C9FAB0C00333F3B /* OpenGL.framework */; };
-		C69595E81CA11E1E006CA238 /* WaterBearApplication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C69595E71CA11E1E006CA238 /* WaterBearApplication.cpp */; settings = {ASSET_TAGS = (); }; };
-		C69595F21CA3CBAE006CA238 /* gl3w.c in Sources */ = {isa = PBXBuildFile; fileRef = C69595EC1CA3CBAE006CA238 /* gl3w.c */; settings = {ASSET_TAGS = (); }; };
+		C193A8391CAB6D8000A0E0B2 /* sb7ktx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C193A8371CAB6D8000A0E0B2 /* sb7ktx.cpp */; };
+		C69595E81CA11E1E006CA238 /* WaterBearApplication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C69595E71CA11E1E006CA238 /* WaterBearApplication.cpp */; };
+		C69595F21CA3CBAE006CA238 /* gl3w.c in Sources */ = {isa = PBXBuildFile; fileRef = C69595EC1CA3CBAE006CA238 /* gl3w.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,12 @@
 		C16B2F661C9F958600333F3B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		C16B2F771C9F9A1800333F3B /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = ../lib/glfw/src/libglfw.3.2.dylib; sourceTree = "<group>"; };
 		C16B2F911C9FAB0C00333F3B /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		C193A8371CAB6D8000A0E0B2 /* sb7ktx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = sb7ktx.cpp; sourceTree = "<group>"; };
+		C193A8381CAB6D8000A0E0B2 /* sb7ktx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sb7ktx.h; sourceTree = "<group>"; };
+		C193A83C1CAB6F2100A0E0B2 /* baboon.ktx */ = {isa = PBXFileReference; lastKnownFileType = file; path = baboon.ktx; sourceTree = "<group>"; };
+		C193A83D1CAB6F2100A0E0B2 /* brick.ktx */ = {isa = PBXFileReference; lastKnownFileType = file; path = brick.ktx; sourceTree = "<group>"; };
+		C193A83E1CAB6F2100A0E0B2 /* floor.ktx */ = {isa = PBXFileReference; lastKnownFileType = file; path = floor.ktx; sourceTree = "<group>"; };
+		C193A83F1CAB6F2100A0E0B2 /* pattern1.ktx */ = {isa = PBXFileReference; lastKnownFileType = file; path = pattern1.ktx; sourceTree = "<group>"; };
 		C67626121CA8895B0087CEB3 /* single_tri_fs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = single_tri_fs.glsl; sourceTree = "<group>"; };
 		C67626131CA8895B0087CEB3 /* single_tri_vs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = single_tri_vs.glsl; sourceTree = "<group>"; };
 		C67626141CA889810087CEB3 /* spinny_cube_vs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = spinny_cube_vs.glsl; sourceTree = "<group>"; };
@@ -63,6 +70,7 @@
 		C16B2F5A1C9F958600333F3B = {
 			isa = PBXGroup;
 			children = (
+				C193A83A1CAB6F2100A0E0B2 /* assets */,
 				C16B2F911C9FAB0C00333F3B /* OpenGL.framework */,
 				C16B2F771C9F9A1800333F3B /* libglfw.3.2.dylib */,
 				C16B2F651C9F958600333F3B /* WaterBear */,
@@ -91,6 +99,34 @@
 			path = WaterBear;
 			sourceTree = "<group>";
 		};
+		C193A8361CAB6D8000A0E0B2 /* sb */ = {
+			isa = PBXGroup;
+			children = (
+				C193A8371CAB6D8000A0E0B2 /* sb7ktx.cpp */,
+				C193A8381CAB6D8000A0E0B2 /* sb7ktx.h */,
+			);
+			path = sb;
+			sourceTree = "<group>";
+		};
+		C193A83A1CAB6F2100A0E0B2 /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				C193A83B1CAB6F2100A0E0B2 /* ktx */,
+			);
+			path = assets;
+			sourceTree = "<group>";
+		};
+		C193A83B1CAB6F2100A0E0B2 /* ktx */ = {
+			isa = PBXGroup;
+			children = (
+				C193A83C1CAB6F2100A0E0B2 /* baboon.ktx */,
+				C193A83D1CAB6F2100A0E0B2 /* brick.ktx */,
+				C193A83E1CAB6F2100A0E0B2 /* floor.ktx */,
+				C193A83F1CAB6F2100A0E0B2 /* pattern1.ktx */,
+			);
+			path = ktx;
+			sourceTree = "<group>";
+		};
 		C67626111CA8895B0087CEB3 /* shaders */ = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +149,7 @@
 		C69595EA1CA3CBAE006CA238 /* ext */ = {
 			isa = PBXGroup;
 			children = (
+				C193A8361CAB6D8000A0E0B2 /* sb */,
 				C67626161CA88EE70087CEB3 /* math */,
 				C69595EB1CA3CBAE006CA238 /* gl */,
 			);
@@ -190,6 +227,7 @@
 			files = (
 				C69595F21CA3CBAE006CA238 /* gl3w.c in Sources */,
 				C69595E81CA11E1E006CA238 /* WaterBearApplication.cpp in Sources */,
+				C193A8391CAB6D8000A0E0B2 /* sb7ktx.cpp in Sources */,
 				C16B2F671C9F958600333F3B /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,8 +319,8 @@
 		C16B2F6B1C9F958600333F3B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				HEADER_SEARCH_PATHS = /Users/carmack/dev/lib/glfw/include/;
-				LIBRARY_SEARCH_PATHS = /Users/carmack/dev/lib/glfw/src/;
+				HEADER_SEARCH_PATHS = /Users/mbradberry/dev/lib/glfw/include/;
+				LIBRARY_SEARCH_PATHS = /Users/mbradberry/dev/lib/glfw/src/;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -290,8 +328,8 @@
 		C16B2F6C1C9F958600333F3B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				HEADER_SEARCH_PATHS = /Users/carmack/dev/lib/glfw/include/;
-				LIBRARY_SEARCH_PATHS = /Users/carmack/dev/lib/glfw/src/;
+				HEADER_SEARCH_PATHS = /Users/mbradberry/dev/lib/glfw/include/;
+				LIBRARY_SEARCH_PATHS = /Users/mbradberry/dev/lib/glfw/src/;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
