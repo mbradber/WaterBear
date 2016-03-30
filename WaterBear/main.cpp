@@ -72,31 +72,6 @@ public:
     }
     
     void OnStart() {
-        
-#define B 0x00, 0x00, 0x00, 0x00
-#define W 0xFF, 0xFF, 0xFF, 0xFF
-        static const GLubyte tex_data[] =
-        {
-            B, W, B, W, B, W, B, W, B, W, B, W, B, W, B, W,
-            W, B, W, B, W, B, W, B, W, B, W, B, W, B, W, B,
-            B, W, B, W, B, W, B, W, B, W, B, W, B, W, B, W,
-            W, B, W, B, W, B, W, B, W, B, W, B, W, B, W, B,
-            B, W, B, W, B, W, B, W, B, W, B, W, B, W, B, W,
-            W, B, W, B, W, B, W, B, W, B, W, B, W, B, W, B,
-            B, W, B, W, B, W, B, W, B, W, B, W, B, W, B, W,
-            W, B, W, B, W, B, W, B, W, B, W, B, W, B, W, B,
-            B, W, B, W, B, W, B, W, B, W, B, W, B, W, B, W,
-            W, B, W, B, W, B, W, B, W, B, W, B, W, B, W, B,
-            B, W, B, W, B, W, B, W, B, W, B, W, B, W, B, W,
-            W, B, W, B, W, B, W, B, W, B, W, B, W, B, W, B,
-            B, W, B, W, B, W, B, W, B, W, B, W, B, W, B, W,
-            W, B, W, B, W, B, W, B, W, B, W, B, W, B, W, B,
-            B, W, B, W, B, W, B, W, B, W, B, W, B, W, B, W,
-            W, B, W, B, W, B, W, B, W, B, W, B, W, B, W, B,
-        };
-#undef B
-#undef W
-        
         mProgram = glCreateProgram();
         
         GLuint fs = glCreateShader(GL_FRAGMENT_SHADER);
@@ -115,6 +90,46 @@ public:
         mModelViewLoc = glGetUniformLocation(mProgram, "mv_matrix");
         mProjLoc = glGetUniformLocation(mProgram, "proj_matrix");
         
+        // quad vertex array object
+        glGenVertexArrays(1, &mVaoQuad);
+        glBindVertexArray(mVaoQuad);
+        
+        WBVert_Pos_Tex quad_verts[] = {
+            {{-1, -1, 1}, {0, 0}},
+            {{1, -1, 1}, {1, 0}},
+            {{1, 1, 1}, {1, 1}},
+            {{-1, 1, 1}, {0, 1}},
+        };
+        
+        GLushort quad_indices[] = {
+            0, 1, 2,
+            2, 3, 0,
+        };
+        
+        glGenBuffers(1, &mPositionBufferQuad);
+        glBindBuffer(GL_ARRAY_BUFFER, mPositionBufferQuad);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(quad_verts), quad_verts, GL_STATIC_DRAW);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(WBVert_Pos_Tex), NULL);
+        glEnableVertexAttribArray(0);
+        
+        glGenBuffers(1, &mIndexBufferQuad);
+        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, mIndexBufferQuad);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(quad_indices), quad_indices, GL_STATIC_DRAW);
+        
+        // quad texture
+        glGenTextures(1, &mTexObjectQuad);
+        std::string quadTexturePath = std::string(getRootdir()) + "../assets/ktx/pattern1.ktx";
+        sb7::ktx::file::load(quadTexturePath.c_str(), mTexObjectQuad);
+        
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        
+        glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(WBVert_Pos_Tex), BUFFER_OFFSET(12));
+        glEnableVertexAttribArray(1);
+        
+        mTexLoc = glGetUniformLocation(mProgram, "tex_object");
+        
+        // cube vertex array object
         glGenVertexArrays(1, &mVao);
         glBindVertexArray(mVao);
         
@@ -216,6 +231,19 @@ public:
         vmath::mat4 projMatrix = vmath::perspective(50.0f, (float)config.windowWidth / (float)config.windowHeight, 0.1f, 1000.0f);
         glUniformMatrix4fv(mProjLoc, 1, GL_FALSE, projMatrix);
         
+        // QUAD RENDER
+        glBindVertexArray(mVaoQuad);
+        glBindTexture(GL_TEXTURE_2D, mTexObjectQuad);
+        
+        vmath::mat4 mvMatrixQuad = vmath::translate(2.5f, 1.5f, -7.0f);
+        glUniformMatrix4fv(mModelViewLoc, 1, GL_FALSE, mvMatrixQuad);
+        
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_SHORT, 0);
+        
+        // CUBE RENDER
+        glBindVertexArray(mVao);
+        glBindTexture(GL_TEXTURE_2D, mTexObject);
+        
         // model-view matrix
         vmath::mat4 mvMatrix = vmath::translate(0.0f, 0.0f, -7.0f) *
             vmath::rotate((float)currentTime * 45.0f, 0.0f, 1.0f, 0.0f) *
@@ -254,6 +282,11 @@ private:
     GLuint mIndexBuffer;
     GLuint mTexObject;
     GLuint mTexLoc;
+    
+    GLuint mVaoQuad;
+    GLuint mPositionBufferQuad;
+    GLuint mIndexBufferQuad;
+    GLuint mTexObjectQuad;
 };
 
 DECLARE_MAIN(RenderingApp)
