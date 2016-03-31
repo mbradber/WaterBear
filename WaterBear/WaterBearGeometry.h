@@ -1,4 +1,9 @@
-// todo: pragma once stuff
+#ifndef WaterBearGeometry_h
+#define WaterBearGeometry_h
+
+#include "ext/math/vmath.h"
+
+#define BUFFER_OFFSET(i) ((char *)NULL + (i))
 
 namespace WaterBear {
 namespace Core {
@@ -15,5 +20,14 @@ namespace Core {
     };
     
     typedef Size<int> SizeI;
+    
+    // VERTEX TYPES
+    typedef struct WBVert_Pos_Tex {
+        vmath::vec3 pos;
+        vmath::vec2 tc;
+    } WBVert_Pos_Tex;
+    
 }
 }
+
+#endif /* WaterBearGeometry_h */

@@ -6,6 +6,9 @@
 #include "WaterBearApplication.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <iostream>
+#include <vector>
+#include <fstream>
 
 namespace WaterBear {
 namespace Core {
@@ -95,6 +98,57 @@ namespace Core {
     
     void Application::glfw_onResize(GLFWwindow *window, int w, int h) {
         sApp->OnWindowResize(w, h);
+    }
+    
+    void Application::CompileShader(GLuint shader, const std::string& shaderName) {
+        // load shader text from file
+        char *rootDir = GetRootDir();
+        if(!rootDir) {
+            return;
+        }
+        
+        std::string shaderPath = std::string(rootDir) + "shaders/" + shaderName;
+        std::string shaderString;
+        std::ifstream sourceFile(shaderPath.c_str());
+        
+        if(sourceFile) {
+            shaderString.assign( ( std::istreambuf_iterator< char >( sourceFile ) ), std::istreambuf_iterator< char >() );
+        }
+        else {
+            std::cout << "Error loading file contents from " << shaderPath << std::endl;
+            return;
+        }
+        
+        const GLchar* shaderSource = shaderString.c_str();
+        
+        // load/compile shader
+        glShaderSource(shader, 1, (const GLchar**)&shaderSource, NULL);
+        glCompileShader(shader);
+        
+        GLint isCompiled = 0;
+        
+        glGetShaderiv(shader, GL_COMPILE_STATUS, &isCompiled);
+        
+        if(isCompiled == GL_FALSE) {
+            GLint maxLength = 0;
+            glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &maxLength);
+            
+            std::vector<GLchar> errorLog(maxLength);
+            glGetShaderInfoLog(shader, maxLength, &maxLength, &errorLog[0]);
+            std::string errorStr(errorLog.begin(), errorLog.end());
+            
+            std::cout << errorStr << std::endl;
+        }
+    }
+    
+    char* Application::GetRootDir() {
+        char *rootDir = getenv("WATERBEAR_DIR");
+        if(!rootDir) {
+            std::cout << "Please define WATERBEAR_DIR" << std::endl;
+            rootDir = NULL;
+        }
+        
+        return rootDir;
     }
         
 }

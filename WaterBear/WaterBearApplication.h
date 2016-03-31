@@ -1,3 +1,6 @@
+#ifndef WaterBearApplication_h
+#define WaterBearApplication_h
+
 #include <string>
 #include <memory>
 #include "WaterBearGeometry.h"
@@ -11,6 +14,9 @@ namespace Core{
         Application() {}
         
         virtual void Run(Application *);
+        
+        static void CompileShader(GLuint shader, const std::string& shaderName);
+        static char* GetRootDir();
         
         
         virtual ~Application() {};
@@ -54,3 +60,5 @@ int main(int argc, const char ** argv)              \
     delete app;                                     \
     return 0;                                       \
 }
+
+#endif /* WaterBearApplication_h */

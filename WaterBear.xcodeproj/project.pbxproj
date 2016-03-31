@@ -11,6 +11,7 @@
 		C16B2F781C9F9A1800333F3B /* libglfw.3.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C16B2F771C9F9A1800333F3B /* libglfw.3.2.dylib */; };
 		C16B2F921C9FAB0C00333F3B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C16B2F911C9FAB0C00333F3B /* OpenGL.framework */; };
 		C193A8391CAB6D8000A0E0B2 /* sb7ktx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C193A8371CAB6D8000A0E0B2 /* sb7ktx.cpp */; };
+		C193A8431CAC706400A0E0B2 /* WaterBearTriangleRO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C193A8421CAC706400A0E0B2 /* WaterBearTriangleRO.cpp */; };
 		C69595E81CA11E1E006CA238 /* WaterBearApplication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C69595E71CA11E1E006CA238 /* WaterBearApplication.cpp */; };
 		C69595F21CA3CBAE006CA238 /* gl3w.c in Sources */ = {isa = PBXBuildFile; fileRef = C69595EC1CA3CBAE006CA238 /* gl3w.c */; };
 /* End PBXBuildFile section */
@@ -40,6 +41,8 @@
 		C193A83F1CAB6F2100A0E0B2 /* pattern1.ktx */ = {isa = PBXFileReference; lastKnownFileType = file; path = pattern1.ktx; sourceTree = "<group>"; };
 		C193A8401CAC582A00A0E0B2 /* texture_map_basic_fs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = texture_map_basic_fs.glsl; sourceTree = "<group>"; };
 		C193A8411CAC582A00A0E0B2 /* texture_map_basic_vs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = texture_map_basic_vs.glsl; sourceTree = "<group>"; };
+		C193A8421CAC706400A0E0B2 /* WaterBearTriangleRO.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WaterBearTriangleRO.cpp; sourceTree = "<group>"; };
+		C193A8441CAC707C00A0E0B2 /* WaterBearTriangleRO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaterBearTriangleRO.h; sourceTree = "<group>"; };
 		C67626121CA8895B0087CEB3 /* single_tri_fs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = single_tri_fs.glsl; sourceTree = "<group>"; };
 		C67626131CA8895B0087CEB3 /* single_tri_vs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = single_tri_vs.glsl; sourceTree = "<group>"; };
 		C67626171CA88EE70087CEB3 /* vmath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vmath.h; sourceTree = "<group>"; };
@@ -95,6 +98,8 @@
 				C69595E61CA11DEF006CA238 /* WaterBearApplication.h */,
 				C69595E71CA11E1E006CA238 /* WaterBearApplication.cpp */,
 				C69595E91CA1201F006CA238 /* WaterBearGeometry.h */,
+				C193A8421CAC706400A0E0B2 /* WaterBearTriangleRO.cpp */,
+				C193A8441CAC707C00A0E0B2 /* WaterBearTriangleRO.h */,
 			);
 			path = WaterBear;
 			sourceTree = "<group>";
@@ -225,6 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C193A8431CAC706400A0E0B2 /* WaterBearTriangleRO.cpp in Sources */,
 				C69595F21CA3CBAE006CA238 /* gl3w.c in Sources */,
 				C69595E81CA11E1E006CA238 /* WaterBearApplication.cpp in Sources */,
 				C193A8391CAB6D8000A0E0B2 /* sb7ktx.cpp in Sources */,
