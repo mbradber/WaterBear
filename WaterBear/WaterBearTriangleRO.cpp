@@ -60,7 +60,6 @@ namespace Renderables {
         glEnableVertexAttribArray(1);
     }
     
-    // todo: double check cleaning up resources
     TriangleRO::~TriangleRO() {
         glDeleteVertexArrays(1, &mVao);
         glDeleteProgram(mProgram);

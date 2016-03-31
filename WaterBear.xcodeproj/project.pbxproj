@@ -12,6 +12,7 @@
 		C16B2F921C9FAB0C00333F3B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C16B2F911C9FAB0C00333F3B /* OpenGL.framework */; };
 		C193A8391CAB6D8000A0E0B2 /* sb7ktx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C193A8371CAB6D8000A0E0B2 /* sb7ktx.cpp */; };
 		C193A8431CAC706400A0E0B2 /* WaterBearTriangleRO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C193A8421CAC706400A0E0B2 /* WaterBearTriangleRO.cpp */; };
+		C193A8481CACBAF500A0E0B2 /* WaterBearCubeRO.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C193A8471CACBAF500A0E0B2 /* WaterBearCubeRO.cpp */; };
 		C69595E81CA11E1E006CA238 /* WaterBearApplication.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C69595E71CA11E1E006CA238 /* WaterBearApplication.cpp */; };
 		C69595F21CA3CBAE006CA238 /* gl3w.c in Sources */ = {isa = PBXBuildFile; fileRef = C69595EC1CA3CBAE006CA238 /* gl3w.c */; };
 /* End PBXBuildFile section */
@@ -43,6 +44,9 @@
 		C193A8411CAC582A00A0E0B2 /* texture_map_basic_vs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = texture_map_basic_vs.glsl; sourceTree = "<group>"; };
 		C193A8421CAC706400A0E0B2 /* WaterBearTriangleRO.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WaterBearTriangleRO.cpp; sourceTree = "<group>"; };
 		C193A8441CAC707C00A0E0B2 /* WaterBearTriangleRO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaterBearTriangleRO.h; sourceTree = "<group>"; };
+		C193A8451CACB19600A0E0B2 /* WaterBearCubeRO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaterBearCubeRO.h; sourceTree = "<group>"; };
+		C193A8461CACB27300A0E0B2 /* WaterBearStockRenderObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WaterBearStockRenderObject.h; sourceTree = "<group>"; };
+		C193A8471CACBAF500A0E0B2 /* WaterBearCubeRO.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = WaterBearCubeRO.cpp; sourceTree = "<group>"; };
 		C67626121CA8895B0087CEB3 /* single_tri_fs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = single_tri_fs.glsl; sourceTree = "<group>"; };
 		C67626131CA8895B0087CEB3 /* single_tri_vs.glsl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = single_tri_vs.glsl; sourceTree = "<group>"; };
 		C67626171CA88EE70087CEB3 /* vmath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = vmath.h; sourceTree = "<group>"; };
@@ -100,6 +104,9 @@
 				C69595E91CA1201F006CA238 /* WaterBearGeometry.h */,
 				C193A8421CAC706400A0E0B2 /* WaterBearTriangleRO.cpp */,
 				C193A8441CAC707C00A0E0B2 /* WaterBearTriangleRO.h */,
+				C193A8451CACB19600A0E0B2 /* WaterBearCubeRO.h */,
+				C193A8461CACB27300A0E0B2 /* WaterBearStockRenderObject.h */,
+				C193A8471CACBAF500A0E0B2 /* WaterBearCubeRO.cpp */,
 			);
 			path = WaterBear;
 			sourceTree = "<group>";
@@ -235,6 +242,7 @@
 				C69595E81CA11E1E006CA238 /* WaterBearApplication.cpp in Sources */,
 				C193A8391CAB6D8000A0E0B2 /* sb7ktx.cpp in Sources */,
 				C16B2F671C9F958600333F3B /* main.cpp in Sources */,
+				C193A8481CACBAF500A0E0B2 /* WaterBearCubeRO.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
