@@ -118,12 +118,17 @@ namespace WaterBear {
                                 const vmath::mat4& mvMatrix,
                                 const vmath::mat4& projMatrix)
         {
+            Render(currentTime, mvMatrix, projMatrix, mTexObject);
+        }
+        
+        void CubeRO::Render(double currentTime, const vmath::mat4& mvMatrix, const vmath::mat4& projMatrix, GLuint texture)
+        {
             // set this objects shader program and bind its VAO
             glUseProgram(mProgram);
             glBindVertexArray(mVao);
             
             // bind and set texture params
-            glBindTexture(GL_TEXTURE_2D, mTexObject);
+            glBindTexture(GL_TEXTURE_2D, texture);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
             

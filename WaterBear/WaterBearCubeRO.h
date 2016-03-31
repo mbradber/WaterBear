@@ -14,6 +14,7 @@ namespace Renderables {
         ~CubeRO();
         
         void Render(double currentTime, const vmath::mat4& mvMatrix, const vmath::mat4& projMatrix);
+        void Render(double currentTime, const vmath::mat4& mvMatrix, const vmath::mat4& projMatrix, GLuint texture);
         
     private:
         GLuint mVao;
